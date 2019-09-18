@@ -54,7 +54,7 @@ class BinarySearchTree:
     root = self.value
     left_max = 0
     right_max = 0
-    
+
     if self.value is None:
       return None
     if self.left is not None:
@@ -68,9 +68,14 @@ class BinarySearchTree:
       root = right_max
     return root
 
-
   # * `for_each` performs a traversal of _every_ node in the tree, executing
   # the passed-in callback function on each tree node value. There is a myriad of ways to
   # perform tree traversal; in this case any of them should work. 
   def for_each(self, cb):
-    pass
+    if self.value is None:
+      return None
+    cb(self.value)
+    if self.left is not None:
+      self.left.for_each(cb)
+    if self.right is not None:
+      self.right.for_each(cb)
