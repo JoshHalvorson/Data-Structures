@@ -82,8 +82,7 @@ class BinarySearchTree:
 
 # DAY 2 Project -----------------------
 
-  # Print all the values in order from low to high
-  # Hint:  Use a recursive, depth first traversal
+  # if there is a left, traverse left, print, then if theres a right, traverse right
   def in_order_print(self):
       if self.value is None:
         return None
@@ -92,20 +91,11 @@ class BinarySearchTree:
       print(self.value)
       if self.right:
         self.right.in_order_print()
-        
-  # Print the value of every node, starting with the given node,
-  # in an iterative breadth first traversal
-  """
-  Breadth first search - queue
-  check each level one at a time 
-  create a queue
-  put root in queue
-  while queue is not empty
-  pop first item in queue
-  check left and right add to queue
-  shift 
-  go to head of queue and continue 
-  """
+
+  # checks if queue is not empty, dequeues a node, checks if theres a left,
+  # if there is it adds it to the queue
+  # then checks if theres a right, if there is, add it to the queue,
+  # then print the originally dequeued node and repeat
   def bft_print(self, node):
     queue = Queue()
     queue.enqueue(node)
@@ -117,18 +107,10 @@ class BinarySearchTree:
         queue.enqueue(node_to_check.right)
       print(node_to_check.value)
 
-  # Print the value of every node, starting with the given node,
-  # in an iterative depth first traversal
-  """
-  Depth first search  
-  create a stack
-  put root in stack
-  while stack is not empty
-  pop first item in stack
-  check root.left and put it in stack
-  check root.right and put it in stack
-  go to top of stack and continue
-  """
+  # checks if the stack is not empty, pops the first node off the stack, 
+  # checks if there is a left, if there is, pushes node to stack,
+  # then checks if there is a right, if there is, pushes it to stack,
+  # then prints the first popped node, and repeats
   def dft_print(self, node):
     stack = Stack()
     stack.push(node)
