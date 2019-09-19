@@ -84,13 +84,13 @@ class BinarySearchTree:
 
   # if there is a left, traverse left, print, then if theres a right, traverse right
   def in_order_print(self):
-      if self.value is None:
-        return None
-      if self.left:
-        self.left.in_order_print()
-      print(self.value)
-      if self.right:
-        self.right.in_order_print()
+    if self.value is None:
+      return None
+    if self.left:
+      self.left.in_order_print()
+    print(self.value)
+    if self.right:
+      self.right.in_order_print()
 
   # checks if queue is not empty, dequeues a node, checks if theres a left,
   # if there is it adds it to the queue
