@@ -1,7 +1,7 @@
-#import sys
-#sys.path.append('../queue_and_stack')
-#from dll_queue import Queue
-#from dll_stack import Stack
+import sys
+sys.path.append('../queue_and_stack')
+from dll_queue import Queue
+from dll_stack import Stack
 
 # Questions:
 # Only ints? 
@@ -79,3 +79,71 @@ class BinarySearchTree:
       self.left.for_each(cb)
     if self.right is not None:
       self.right.for_each(cb)
+
+# DAY 2 Project -----------------------
+
+  # Print all the values in order from low to high
+  # Hint:  Use a recursive, depth first traversal
+  def in_order_print(self):
+      pass
+
+  # Print the value of every node, starting with the given node,
+  # in an iterative breadth first traversal
+  """
+  Breadth first search - queue
+  check each level one at a time 
+  create a queue
+  put root in queue
+  while queue is not empty
+  pop first item in queue
+  check left and right add to queue
+  shift 
+  go to head of queue and continue 
+  """
+  def bft_print(self, node):
+    pass
+
+  # Print the value of every node, starting with the given node,
+  # in an iterative depth first traversal
+  """
+  Depth first search  
+  create a stack
+  put root in stack
+  while stack is not empty
+  pop first item in stack
+  check root.left and put it in stack
+  check root.right and put it in stack
+  go to top of stack and continue
+  """
+  def dft_print(self, node):
+    stack = Stack()
+    stack.push(node)
+    while stack.len() > 0:
+      node_to_check = stack.pop()
+      if node_to_check.left:
+        stack.push(node_to_check.left)
+      if node_to_check.right:
+        stack.push(node_to_check.right)
+      print(node_to_check.value)
+
+  # STRETCH Goals -------------------------
+  # Note: Research may be required
+
+  # Print In-order recursive DFT
+  def pre_order_dft(self, node):
+    pass
+
+  # Print Post-order recursive DFT
+  def post_order_dft(self, node):
+    pass
+
+if __name__ == '__main__':
+  bst = BinarySearchTree(1)
+  bst.insert(8)
+  bst.insert(5)
+  bst.insert(7)
+  bst.insert(6)
+  bst.insert(3)
+  bst.insert(4)
+  bst.insert(2)
+  bst.dft_print(bst)
