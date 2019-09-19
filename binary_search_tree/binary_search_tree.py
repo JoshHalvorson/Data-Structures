@@ -101,7 +101,15 @@ class BinarySearchTree:
   go to head of queue and continue 
   """
   def bft_print(self, node):
-    pass
+    queue = Queue()
+    queue.enqueue(node)
+    while queue.len() > 0:
+      node_to_check = queue.dequeue()
+      if node_to_check.left:
+        queue.enqueue(node_to_check.left)
+      if node_to_check.right:
+        queue.enqueue(node_to_check.right)
+      print(node_to_check.value)
 
   # Print the value of every node, starting with the given node,
   # in an iterative depth first traversal
@@ -146,4 +154,4 @@ if __name__ == '__main__':
   bst.insert(3)
   bst.insert(4)
   bst.insert(2)
-  bst.dft_print(bst)
+  bst.bft_print(bst)
